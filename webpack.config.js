@@ -7,9 +7,9 @@ const config = {
     './src/index.ts'
   ],
   output: {
-    path: "./",
-    publicPath: './',
-    filename: "./build/index.js"
+    path: "./public",
+    publicPath: './public',
+    filename: "./index.js"
   },
   module: {
     loaders: [
