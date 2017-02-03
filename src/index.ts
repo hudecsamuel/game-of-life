@@ -225,8 +225,8 @@ let alive: Array<Pos> = [
 ]
 
 var config: GameConfig = {
-    defaultGrid: Grid.getStarting(300, 300, alive),
-    cellWidth: 5
+    defaultGrid: Grid.getStarting(300, 200, alive),
+    cellWidth: 4
 }
 
 

@@ -231,8 +231,8 @@
 	    }
 	];
 	var config = {
-	    defaultGrid: Grid.getStarting(300, 300, alive),
-	    cellWidth: 5
+	    defaultGrid: Grid.getStarting(300, 200, alive),
+	    cellWidth: 4
 	};
 	var game = new Game(config);
 	game.start(50);
