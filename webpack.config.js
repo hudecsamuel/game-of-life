@@ -9,7 +9,7 @@ const config = {
   output: {
     path: "./",
     publicPath: './',
-    filename: "index.js"
+    filename: "./build/index.js"
   },
   module: {
     loaders: [
