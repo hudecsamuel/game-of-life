@@ -201,7 +201,7 @@ class Game {
 
 }
 
-let alive: Array<Pos> = [
+const alive: Array<Pos> = [
     {
         x: 11,
         y: 10
