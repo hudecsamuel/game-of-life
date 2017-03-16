@@ -42,6 +42,6 @@ declare class Game {
     private step();
     render(): void;
 }
-declare let alive: Array<Pos>;
+declare const alive: Array<Pos>;
 declare var config: GameConfig;
 declare var game: Game;
