@@ -8,5 +8,8 @@
         "outDir": "./dist/js",
         "sourceMap": true,
         "declaration": true
-    }
+    },
+    "include": [
+        "./src"
+    ]
 }
