@@ -14,7 +14,7 @@ const config = {
     filename: "./index.js"
   },
   module: {
-    loaders: [
+    rules: [
     {
       exclude: /node_modules/,
       loader: 'ts-loader',
