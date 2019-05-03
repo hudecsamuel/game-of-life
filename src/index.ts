@@ -1,4 +1,5 @@
-interface Pos {
+import Glider from './glider'
+export interface Pos {
     x: number
     y: number
 }
@@ -202,6 +203,9 @@ class Game {
 }
 
 const alive: Array<Pos> = [
+    /* 0 1 0 */
+    /* 0 0 1 */
+    /* 1 1 1 */
     {
         x: 11,
         y: 10
@@ -221,7 +225,8 @@ const alive: Array<Pos> = [
     {
         x: 12,
         y: 12
-    }
+    },
+    ...Glider.getGlider({x: 70, y: 50}, Glider.directions.DL)
 ]
 
 var config: GameConfig = {
