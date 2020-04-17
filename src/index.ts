@@ -148,6 +148,8 @@ interface GameConfig {
 class Game {
     private grid: Grid
     private canvas: HTMLCanvasElement
+    private generationCount: number;
+    private counterElement: HTMLSpanElement;
     private interval: any
     private cellWidth: number
 
@@ -155,6 +157,8 @@ class Game {
         this.canvas = <HTMLCanvasElement>document.querySelector("#canvas")
         this.grid = config.defaultGrid
         this.cellWidth = config.cellWidth || 3
+        this.generationCount = 0;
+        this.counterElement = <HTMLSpanElement>document.querySelector("#counter")
 
 
         this.canvas.width = this.cellWidth * this.grid.cellsX
@@ -186,6 +190,7 @@ class Game {
         this.grid = nextGrid
 
         this.render()
+        this.generationCount = this.generationCount+1
     }
 
     render() {
@@ -197,6 +202,7 @@ class Game {
             context.fillStyle = cell.alive ? 'black' : '#EEE';
             context.fill();
         })
+        this.counterElement.textContent = String(this.generationCount);
     }
 
 
@@ -226,7 +232,8 @@ const alive: Array<Pos> = [
         x: 12,
         y: 12
     },
-    ...Glider.getGlider({x: 70, y: 50}, Glider.directions.DL)
+    ...Glider.getGlider({x: 50, y: 11}, Glider.directions.DL),
+    ...Glider.getGlider({x: 50, y: 50}, Glider.directions.UL)
 ]
 
 var config: GameConfig = {

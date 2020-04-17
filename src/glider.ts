@@ -1,11 +1,6 @@
 import { Pos } from ".";
-
-export type Binary = 0 | 1
-export type GliderCells = [
-    [Binary, Binary, Binary],
-    [Binary, Binary, Binary],
-    [Binary, Binary, Binary]
-]
+import { rotation } from "./matrix/rotation";
+import { I2DBinaryMatrix } from "./types";
 
 export enum directions {
     DL = 'downLeft',
@@ -15,7 +10,7 @@ export enum directions {
 }
 
 export default class Glider {
-    static deadGlider: GliderCells = [
+    static deadGlider: I2DBinaryMatrix = [
         [0,0,0],
         [0,0,0],
         [0,0,0],
@@ -23,23 +18,18 @@ export default class Glider {
 
     static directions = directions
 
-    static downRight: GliderCells = [
+    static downRight: I2DBinaryMatrix = [
         [0,1,0],
         [0,0,1],
         [1,1,1],
     ]
 
-    static celldr: GliderCells = [
-        [1, 0, 0],
-        [1, 0, 1],
-        [1, 1, 0]
-    ]
-    static downLeft: GliderCells = Glider.rotate(Glider.downRight)
-    static upLeft: GliderCells = Glider.rotate(Glider.downLeft)
-    static upRight: GliderCells = Glider.rotate(Glider.upLeft)
+    static downLeft: I2DBinaryMatrix = rotation(Glider.downRight, 90)
+    static upLeft: I2DBinaryMatrix = rotation(Glider.downLeft, 90)
+    static upRight: I2DBinaryMatrix = rotation(Glider.upLeft, 90)
 
-    static rotate(cells: GliderCells): GliderCells {
-        let newCells: GliderCells = this.deadGlider
+    static rotate(cells: I2DBinaryMatrix): I2DBinaryMatrix {
+        let newCells: I2DBinaryMatrix = this.deadGlider
         cells.forEach((row, index) => {
             row.forEach((cell, cellIndex) => {
                 newCells[cellIndex][2 - index] = cell
@@ -54,7 +44,7 @@ export default class Glider {
         return glider.getPositions()
     }
 
-    cells: GliderCells
+    cells: I2DBinaryMatrix
     offset: Pos
 
     constructor(offset: Pos, direction: directions) {
